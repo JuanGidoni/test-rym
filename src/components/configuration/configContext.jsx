@@ -6,21 +6,60 @@ export function useConfigurationContext() {
  return useContext(ConfigurationContext)
 }
 
-export function ConfigurationProvider({children, ...props}) {
+export function ConfigurationProvider({ children, ...props }) {
+ 
  const [loading, setLoading] = useState(true)
+ const [characters, setCharacters] = useState([])
+ const [uniqueChar, setUniqueChar] = useState({})
+
+ const urls = {
+  "characters": `https://rickandmortyapi.com/api/character`,
+  "locations": "https://rickandmortyapi.com/api/location",
+  "episodes": "https://rickandmortyapi.com/api/episode"
+ }
 
  // Create the functionality to process R&M API (next versions)
- 
+
+ const getCharactersFromApi = async (page) => {
+  try {
+   let callToApi
+   if (page) {
+    callToApi = await fetch(urls.characters+'/page?'+page)
+   } else {
+    callToApi = await fetch(urls.characters)
+   }
+   const resultFromCall = await callToApi.json()
+   setCharacters(resultFromCall)
+   setLoading(false)
+  } catch (error) {
+   console.log(error)
+  }
+ }
+
+ const getUniqueCharacterInfo = async (id) => {
+  try {
+   const callToApi = await fetch(urls.characters+'/'+id)
+   const resultFromCall = await callToApi.json()
+   setUniqueChar(resultFromCall)
+   setLoading(false)
+  } catch (error) {
+    console.log(error)
+  }
+ }
+
  useEffect(() => {
   const ejecuteOnce = () => {
-   setLoading(false)
+   getCharactersFromApi()
   }
   return ejecuteOnce()
  }, [])
 
  const value = {
   loading,
-  setLoading
+  setLoading,
+  characters,
+  getUniqueCharacterInfo,
+  uniqueChar
  }
 
  return (

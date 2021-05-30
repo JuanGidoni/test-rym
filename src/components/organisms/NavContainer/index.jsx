@@ -1,7 +1,9 @@
 import {
- Navbar, Nav, Form, FormControl, Button
+ Navbar, Nav
 } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import SearchBar from '../../atoms/SearchBar'
+
 const NavContainer = () => {
  return (
   <Navbar bg="light" expand="lg">
@@ -11,10 +13,7 @@ const NavContainer = () => {
     <Nav className="mr-auto">
      <Link to="/" className="nav-link">Back to home</Link>
     </Nav>
-    <Form inline>
-     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-     <Button variant="outline-success">Search</Button>
-    </Form>
+    <SearchBar />
    </Navbar.Collapse>
   </Navbar>
  )
