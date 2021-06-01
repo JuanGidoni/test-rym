@@ -8,6 +8,7 @@ import Character from "./pages/Character"
 import Notfound from "./pages/Notfound"
 import NavContainer from "./organisms/NavContainer"
 import Footer from "./atoms/Footer"
+import Search from './pages/Search'
 
 const App = () => {
 
@@ -22,6 +23,9 @@ const App = () => {
             </Route>
             <Route exact path="/character/:id">
               <Character />
+            </Route>
+            <Route exact path="/search/:name">
+              <Search />
             </Route>
             <Route path="*">
               <Notfound />

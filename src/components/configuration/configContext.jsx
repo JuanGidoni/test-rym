@@ -10,6 +10,7 @@ export function ConfigurationProvider({ children, ...props }) {
 
   const [loading, setLoading] = useState(true)
   const [characters, setCharacters] = useState([])
+  const [searchedChar, setSearchedChar] = useState([])
   const [uniqueChar, setUniqueChar] = useState(null)
 
   const urls = {
@@ -18,14 +19,12 @@ export function ConfigurationProvider({ children, ...props }) {
     "episodes": "https://rickandmortyapi.com/api/episode"
   }
 
-  // Create the functionality to process R&M API (next versions)
-
-  const getCharactersFromApi = async (page) => {
+  const changePage = async (page) => {
     try {
       let callToApi
-      if (page) {
-        callToApi = await fetch(urls.characters + '/page?' + page)
-      } else {
+      if(page){
+        callToApi = await fetch(page)
+      }else{
         callToApi = await fetch(urls.characters)
       }
       const resultFromCall = await callToApi.json()
@@ -35,32 +34,30 @@ export function ConfigurationProvider({ children, ...props }) {
     }
   }
 
-  const getUniqueCharacterInfo = async (id) => {
-    try {
-      const callToApi = await fetch(urls.characters + '/' + id)
-      const resultFromCall = await callToApi.json()
-      setUniqueChar(resultFromCall)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   useEffect(() => {
-    const ejecuteOnce = () => {
-      getCharactersFromApi()
-      setLoading(false)
-    }
-    return ejecuteOnce()
+    (async () => {
+      try {
+        const callToApi = await fetch(urls.characters)
+        const resultFromCall = await callToApi.json()
+        setCharacters(resultFromCall)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
+    })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [loading])
 
   const value = {
+    urls,
     loading,
-    setLoading,
     characters,
-    getUniqueCharacterInfo,
+    searchedChar,
     uniqueChar,
-    setUniqueChar
+    setUniqueChar,
+    setSearchedChar,
+    setLoading,
+    changePage
   }
 
   return (

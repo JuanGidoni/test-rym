@@ -1,7 +1,6 @@
 
 import { PieChart } from 'react-minimal-pie-chart';
 const Chart = ({ data }) => {
- console.log(data)
  return (
   <div className="card">
    <div className="text-center mb-3 d-flex align-items-center justify-content-center">

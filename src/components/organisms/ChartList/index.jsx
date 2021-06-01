@@ -2,8 +2,8 @@ import { Row, Col } from "react-bootstrap"
 import Chart from "../../molecules/Chart"
 import calculate from "../../utils/calculate"
 const ChartList = ({characters}) => {
- const speciesCalculate = calculate(characters.results, "species", "human")
- const statusCalculate = calculate(characters.results, "status", "alive")
+ const speciesCalculate = calculate(characters, "species", "human")
+ const statusCalculate = calculate(characters, "status", "alive")
  return (
   <Row>
    <Col md={6}>

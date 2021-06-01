@@ -7,13 +7,20 @@ import CharacterUniqueCardFull from '../../molecules/CharacterUniqueCardFull'
 const Character = () => {
 
  const { id } = useParams()
- const { uniqueChar, getUniqueCharacterInfo } = useConfigurationContext()
+ const { uniqueChar, setUniqueChar, urls} = useConfigurationContext()
 
  useEffect(() => {
-  
-   getUniqueCharacterInfo(id)
+  (async () => {
+    try {
+      const callToApi = await fetch(`${urls.characters}/${id}`)
+      const resultFromCall = await callToApi.json()
+      setUniqueChar(resultFromCall)
+    } catch (error) {
+      console.log(error)
+    }
+  })()
 
- }, [getUniqueCharacterInfo, id])
+ }, [id, setUniqueChar, urls.characters])
  return (
   !uniqueChar ? 'Loading...' :
    <div className="uniqueCharacter">
