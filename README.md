@@ -1,5 +1,5 @@
 # test-rym
-Interview Test using Rick &amp; Morty API with React JS
+Interview Test using Rick &amp; Morty API with React JS & React Bootstrap
 
 ## How to install/use
 

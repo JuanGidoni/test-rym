@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { ConfigurationProvider } from './configuration/ConfigContext'
+import { ConfigurationProvider } from './configuration/ConfigurationContext'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './templates/global.css'
 // Components

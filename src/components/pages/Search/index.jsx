@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { useConfigurationContext } from '../../configuration/ConfigContext'
+import { useConfigurationContext } from '../../configuration/ConfigurationContext'
 import CharacterUniqueCard from "../../molecules/CharacterUniqueCard"
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";

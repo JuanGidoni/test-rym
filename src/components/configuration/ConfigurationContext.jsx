@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Loader from '../atoms/Loader'
+
 const ConfigurationContext = React.createContext()
 
 export function useConfigurationContext() {

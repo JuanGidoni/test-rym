@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useConfigurationContext } from '../../configuration/ConfigContext'
+import { useConfigurationContext } from '../../configuration/ConfigurationContext'
 import { useParams } from "react-router-dom"
 import CharacterUniqueCardFull from '../../molecules/CharacterUniqueCardFull'
 

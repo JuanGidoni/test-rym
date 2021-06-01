@@ -1,4 +1,4 @@
-import { useConfigurationContext } from "../../configuration/ConfigContext"
+import { useConfigurationContext } from "../../configuration/ConfigurationContext"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import CharactersList from "../../organisms/CharactersList"
 import ChartList from "../../organisms/ChartList"
