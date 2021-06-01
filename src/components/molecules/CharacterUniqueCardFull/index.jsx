@@ -1,8 +1,8 @@
 import Gender from "../../atoms/Gender"
 import Parragraph from "../../atoms/Parragraph"
 import Status from "../../atoms/Status"
-
-const CharacterUniqueCard = ({
+import { formatedDate } from "../../utils/date"
+const CharacterUniqueCardFull = ({
   className,
   id,
   name,
@@ -35,10 +35,16 @@ const CharacterUniqueCard = ({
           <Parragraph className="text-warning">
             {location.name}
           </Parragraph>
+          <Parragraph className="text-success">
+            {origin.name}
+          </Parragraph>
+          <Parragraph className="text-pink">
+            {formatedDate(created)}
+          </Parragraph>
         </div>
       </div>
     </div>
   )
 }
 
-export default CharacterUniqueCard
+export default CharacterUniqueCardFull

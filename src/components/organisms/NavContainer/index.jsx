@@ -6,7 +6,7 @@ import SearchBar from '../../atoms/SearchBar'
 
 const NavContainer = () => {
  return (
-  <Navbar bg="light" expand="lg">
+  <Navbar bg="rym" expand="lg">
    <Navbar.Brand>R& M Challenge Frontend</Navbar.Brand>
    <Navbar.Toggle aria-controls="basic-navbar-nav" />
    <Navbar.Collapse id="basic-navbar-nav">
